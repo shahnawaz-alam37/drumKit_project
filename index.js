@@ -5,12 +5,14 @@ for (var i = 0; i  < 7; i++) {
        
         var val = this.innerHTML;
         make_sound(val);
+        buttonAnimation(val);
     });
 }
 
 document.addEventListener("keydown", function(event){
     var note = event.key;
     make_sound(note);
+    buttonAnimation(note);
 })
 // var soundName = "/sounds/tom-"+i+".mp3";
 //         var audio = new Audio(soundName);
@@ -49,4 +51,12 @@ function make_sound(keyNote){
         default:
             break;
     } 
+}
+
+function buttonAnimation(currentKey){
+    var activeKey = document.querySelector("."+currentKey);
+    activeKey.classList.add("pressed");
+    setTimeout(function(){
+        activeKey.classList.remove("pressed");
+    },100);
 }
